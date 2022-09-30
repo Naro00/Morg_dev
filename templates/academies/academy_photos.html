@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{academy.name}}'s Photos
+{% endblock page_title %}
+
+{% block search-bar %}
+
+{% endblock search-bar %}
+
+{% block content %}
+    <div class="container mx-auto my-10 flex flex-col">
+
+        <div class="flex mb-5">
+            <i class="fa-solid fa-angle-left text-lg text-Persian-Green"></i>
+            <a href="{% url 'academies:edit' academy.pk %}" class="text-Persian-Green font-semibold mx-3"> Back to edit room </a>
+        </div>
+   
+        {% for photo in academy.photos.all %}
+        <div class="mb-5 border border-Maize-Crayola p-6 flex justify-between">  
+            <div class="flex items-start">
+                <img src="{{photo.file.url}}" class="w-32 h-32" />  
+                <span class="ml-5">{{photo.caption}}</span>
+            </div> 
+            <div class="flex flex-col w-1/6">
+                <a class="btn-link-s mb-5" href="{% url 'academies:edit-photo' academy.pk photo.pk %}">Edit</a>
+                <a class="btn-link-s bg-Burnt-Sienna" href="{% url 'academies:delete-photo' academy.pk photo.pk %}">Delete</a>
+            </div>   
+        </div>
+        {% endfor %}
+
+        <div class="my-5 w-full flex justify-center">
+            <i class="fa-solid fa-images text-lg text-Persian-Green"></i>
+            <a href="{% url 'academies:add-photos' academy.pk %}" class="text-Persian-Green font-semibold mx-3">Upload Photo</a>
+        </div>
+        
+    </div>    
+{% endblock content %}

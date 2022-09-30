@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Update Academy
+{% endblock page_title %}
+
+{% block search-bar %}
+
+{% endblock search-bar %}
+
+{% block content %}
+    <div class="container lg:w-4/12 md:w-1/2 xl:w-1/5 mx-auto my-10 flex flex-col items-center border p-6 border-transparent">
+   
+        {% include "mixins/academy/academy_form.html" with form=form cta="Update Academy" %}
+
+        <div class="mt-5">
+            <a href="{% url 'academies:photos' academy.pk %}" class="text-Sandy-Brown font-medium">Edit Photos</a>
+        </div>
+        
+    </div>    
+{% endblock content %}

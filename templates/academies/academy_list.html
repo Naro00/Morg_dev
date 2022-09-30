@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+
+{%load static %}
+
+{% block page_title %} Home {% endblock page_title %}
+
+{%block content %} 
+
+    <div class="container mx-auto pb-10"> 
+        <div class="container mx-auto bg-gray-600 h-auto w-max mt-10 mb-10 rounded-xl bg-cover bg-center">
+            <a href="https://www.notion.so/MORG-f6597e8b9a344787a57cef50d23b4f10">
+                <img class="rounded-xl h-full mx-auto w-full" src="{% static 'img/morg_about.png' %}" />
+            </a>
+        </div>
+        <div class="flex flex-wrap mb-10">
+            {% for academy in academies %}
+                {% include 'mixins/academy_card.html' with academy=academy %}
+            {% endfor %} 
+        </div>
+
+        <div class="flex items-center justify-center mx-auto container">
+            {% if page_obj.has_previous %}
+            
+            <a href="?page={{page_obj.previous_page_number}}" class="text-Burnt-Sienna"><i class="fa-solid fa-arrow-left fa-lg"></i></a>
+
+            {% endif %}
+
+            <span class="mx-3 font-medium">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}" class="text-Burnt-Sienna"><i class="fa-solid fa-arrow-right fa-lg"></i></a>
+            {% endif %} 
+        </div>
+
+    </div>
+{% endblock content %}

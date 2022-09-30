@@ -1,0 +1,19 @@
+<div class="w-1/4 mb-10 px-2 overflow-hidden">
+    <a href="{% url 'academies:detail' academy.pk %}">
+        <div class="w-auto h-64 mb-2 bg-cover bg-center rounded-xl" style="background-image: url({{academy.first_photo}});"></div>
+        <div class="flex justify-between mb-2 truncate">
+            <div class="w-4/5 overflow-hidden flex">
+                {% if academy.host.super_academy %}
+                    <span class=" mr-px uppercase font-semibold text-xs border border-Persian-Green text-Persian-Green rounded py-px px-1">super academy</span>
+                {% endif %}
+                <span class="text-xs text-gray-600 font-light block truncate ml-1">
+                    {{academy.city}} {{academy.borough}}
+                </span> 
+            </div>
+            <span class="text-sm flex items-center">
+                <i class="fa-solid fa-star text-Burnt-Sienna mr-1 text-xs"></i>{{academy.total_rating}}
+            </span>
+        </div>
+        <span class="text-black font-bold w-11/12 block truncate">{{academy.name}}</span>
+    </a>
+</div>    

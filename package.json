@@ -1,0 +1,25 @@
+{
+  "name": "morg_dev",
+  "version": "1.0.0",
+  "description": "dev about Morg web service",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naro00/Morg_dev.git"
+  },
+  "scripts": {
+    "css": "gulp"
+  },
+  "homepage": "https://github.com/Naro00/Morg_dev#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.11",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^7.0.3",
+    "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "sass": "^1.54.9"
+  }
+}

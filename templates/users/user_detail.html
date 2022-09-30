@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{user_obj.first_name}}'s Profile
+{% endblock page_title %}
+
+{% block content %}
+<div class="h-full">
+    <div class="container lg:w-4/12 md:w-1/2 xl:w-1/5 mx-auto my-10 flex flex-col items-center border p-6 border-transparent">
+    
+        {% include "mixins/user_avatar.html" with user=user_obj %}
+
+        <div class="flex items-center">
+            <span class="text-3xl mt-1">
+                {{user_obj.first_name}}
+            </span>
+                {% if user_obj.super_academy %}
+                <i class="fa-solid fa-medal text-Persian-Green ml-1"></i>
+                {% endif %}
+        </div>
+        <span class="text-lg mt-1 mb-6">{{user_obj.bio}}</span>
+
+        {% if user == user_obj %}
+            <a href="{% url 'users:update' %}" class="btn text-Sandy-Brown font-medium">Edit Profile</a>
+        {% endif %}
+
+    </div>
+
+        {% if user_obj.academies.all.count > 0 %}
+        <div class="container flex flex-col items-center mx-auto pb-10">
+            <h3 class="mb-5 text-2xl text-Charcoal">{{user_obj.first_name}}'s Academy</h3>
+        </div>
+        <div class="flex flex-wrap mb-10 mx-auto pb-10 container items-center">
+            {% for academy in user_obj.academies.all %}
+                {% include 'mixins/academy_card.html' with academy=academy %}
+            {% endfor %} 
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
