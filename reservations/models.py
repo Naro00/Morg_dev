@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from core import models as core_models
+from . import managers
 
 
 class Reservation(core_models.TimeStampModel):
@@ -24,6 +25,7 @@ class Reservation(core_models.TimeStampModel):
         "academies.Academy", related_name="reservations", on_delete=models.CASCADE
     )
     booking = models.DateField()
+    objects = managers.CustomReservationManager()
 
     def __str__(self):
         return f"{self.Academy} - {self.booking}"
